@@ -1,0 +1,336 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme: accent + surface/text as CSS variables (data-theme set by ThemeProvider) */
+
+/* Default: colorful gradient (Render-style cyan → blue → violet) */
+:root,
+[data-theme='gradient'] {
+  --color-bg: #0a0a0f;
+  --color-text: #f4f4f5;
+  --color-text-muted: #a1a1aa;
+  --color-bg-elevated: rgba(15, 15, 25, 0.85);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-accent: #22d3ee;
+  --color-accent-hover: #67e8f9;
+  --color-accent-muted: rgba(34, 211, 238, 0.15);
+  --color-accent-glow: rgba(34, 211, 238, 0.3);
+  --color-accent-gradient: linear-gradient(135deg, #22d3ee 0%, #3b82f6 45%, #8b5cf6 100%);
+  --color-selection-bg: color-mix(in srgb, #22d3ee 28%, transparent);
+  --color-selection-text: #f4f4f5;
+}
+[data-theme='orange'] {
+  --color-bg: #0c0a09;
+  --color-text: #f4f4f5;
+  --color-text-muted: #a1a1aa;
+  --color-bg-elevated: rgba(24, 20, 18, 0.9);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-accent: #f97316;
+  --color-accent-hover: #fb923c;
+  --color-accent-muted: rgba(249, 115, 22, 0.15);
+  --color-accent-glow: rgba(249, 115, 22, 0.28);
+  --color-accent-gradient: linear-gradient(135deg, #fbbf24, #f97316 50%, #fb923c);
+  --color-selection-bg: color-mix(in srgb, #f97316 28%, transparent);
+  --color-selection-text: #f4f4f5;
+}
+[data-theme='blue'] {
+  --color-bg: #0a0f1a;
+  --color-text: #f4f4f5;
+  --color-text-muted: #a1a1aa;
+  --color-bg-elevated: rgba(15, 23, 42, 0.9);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-accent: #3b82f6;
+  --color-accent-hover: #60a5fa;
+  --color-accent-muted: rgba(59, 130, 246, 0.15);
+  --color-accent-glow: rgba(59, 130, 246, 0.28);
+  --color-accent-gradient: linear-gradient(135deg, #38bdf8, #3b82f6 50%, #6366f1);
+  --color-selection-bg: color-mix(in srgb, #3b82f6 28%, transparent);
+  --color-selection-text: #f4f4f5;
+}
+[data-theme='emerald'] {
+  --color-bg: #0b1210;
+  --color-text: #f4f4f5;
+  --color-text-muted: #a1a1aa;
+  --color-bg-elevated: rgba(15, 25, 22, 0.9);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-accent: #10b981;
+  --color-accent-hover: #34d399;
+  --color-accent-muted: rgba(16, 185, 129, 0.15);
+  --color-accent-glow: rgba(16, 185, 129, 0.28);
+  --color-accent-gradient: linear-gradient(135deg, #6ee7b7, #10b981 50%, #14b8a6);
+  --color-selection-bg: color-mix(in srgb, #10b981 28%, transparent);
+  --color-selection-text: #f4f4f5;
+}
+[data-theme='violet'] {
+  --color-bg: #0f0a1a;
+  --color-text: #f4f4f5;
+  --color-text-muted: #a1a1aa;
+  --color-bg-elevated: rgba(24, 18, 42, 0.9);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-accent: #8b5cf6;
+  --color-accent-hover: #a78bfa;
+  --color-accent-muted: rgba(139, 92, 246, 0.15);
+  --color-accent-glow: rgba(139, 92, 246, 0.28);
+  --color-accent-gradient: linear-gradient(135deg, #a78bfa, #8b5cf6 50%, #c084fc);
+  --color-selection-bg: color-mix(in srgb, #8b5cf6 28%, transparent);
+  --color-selection-text: #f4f4f5;
+}
+/* Light theme */
+[data-theme='light'] {
+  --color-bg: #f8fafc;
+  --color-text: #0f172a;
+  --color-text-muted: #475569;
+  --color-bg-elevated: rgba(248, 250, 252, 0.9);
+  --color-border: rgba(15, 23, 42, 0.1);
+  --color-accent: #6366f1;
+  --color-accent-hover: #818cf8;
+  --color-accent-muted: rgba(99, 102, 241, 0.15);
+  --color-accent-glow: rgba(99, 102, 241, 0.25);
+  --color-accent-gradient: linear-gradient(135deg, #818cf8, #6366f1 50%, #4f46e5);
+  --color-selection-bg: color-mix(in srgb, #6366f1 22%, transparent);
+  --color-selection-text: #0f172a;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Firefox: thin scrollbar with theme colors */
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-accent) var(--color-bg-elevated);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    .animate-fade-in,
+    .animate-fade-in-up,
+    .animate-float,
+    .animate-page-enter {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+  body {
+    @apply font-body;
+    color: var(--color-text);
+  }
+  /* WebKit (Chrome, Safari, Edge): custom scrollbar to match theme */
+  html::-webkit-scrollbar {
+    width: 10px;
+  }
+  html::-webkit-scrollbar-track {
+    background: var(--color-bg-elevated);
+  }
+  html::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--color-accent) 70%, var(--color-bg));
+    border-radius: 9999px;
+    border: 2px solid var(--color-bg-elevated);
+  }
+  html::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent);
+  }
+}
+
+/* Theme-aware page background (used in Layout) */
+.bg-page {
+  background-color: var(--color-bg);
+}
+/* Dark themes: subtle dot grid with accent tint so it fits every theme */
+:root .bg-grid-pattern,
+[data-theme='gradient'] .bg-grid-pattern,
+[data-theme='orange'] .bg-grid-pattern,
+[data-theme='blue'] .bg-grid-pattern,
+[data-theme='emerald'] .bg-grid-pattern,
+[data-theme='violet'] .bg-grid-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='16' cy='16' r='0.5' fill='%23ffffff' fill-opacity='0.06'/%3E%3C/svg%3E");
+  background-size: 32px 32px;
+}
+[data-theme='light'] .bg-page.bg-grid-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z' fill='%2394a3b8' fill-opacity='0.12' fill-rule='nonzero'/%3E%3C/g%3E%3C/svg%3E");
+}
+/* Subtle radial glow from top-right using theme accent (adds depth, no distraction) */
+.page-bg-glow {
+  background-image: radial-gradient(
+    ellipse 100% 70% at 75% 0%,
+    color-mix(in srgb, var(--color-accent) 7%, transparent) 0%,
+    color-mix(in srgb, var(--color-accent) 2%, transparent) 45%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+[data-theme='light'] .page-bg-glow {
+  background-image: radial-gradient(
+    ellipse 100% 70% at 75% 0%,
+    color-mix(in srgb, var(--color-accent) 5%, transparent) 0%,
+    transparent 50%
+  );
+}
+
+/* Hero overlay: fades into theme background so no hard cut (avoids gray blob on emerald etc.) */
+.hero-overlay {
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--color-bg) 85%, transparent) 0%, transparent 100%);
+}
+
+/* Light theme: nav and theme dropdown use surface colors */
+[data-theme='light'] nav {
+  color: var(--color-text);
+}
+[data-theme='light'] nav a {
+  color: var(--color-text-muted);
+}
+[data-theme='light'] nav a:hover {
+  color: var(--color-text);
+}
+[data-theme='light'] .nav-pill {
+  background: var(--color-bg-elevated);
+  border-color: var(--color-border);
+  box-shadow: 0 10px 40px -10px rgba(15, 23, 42, 0.15);
+}
+[data-theme='light'] .nav-pill a.text-zinc-400 {
+  color: var(--color-text-muted);
+}
+[data-theme='light'] .nav-pill a:hover {
+  color: var(--color-text);
+}
+[data-theme='light'] nav [role="menu"] {
+  background: var(--color-bg-elevated);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+[data-theme='light'] nav [role="menu"] [role="menuitem"] {
+  color: var(--color-text-muted);
+}
+[data-theme='light'] nav [role="menu"] [role="menuitem"]:hover {
+  color: var(--color-text);
+  background: rgba(15, 23, 42, 0.06);
+}
+
+/* Light theme: map zinc text/UI to theme variables so existing components adapt */
+[data-theme='light'] .text-zinc-100,
+[data-theme='light'] .text-zinc-200,
+[data-theme='light'] .text-zinc-300 {
+  color: var(--color-text);
+}
+[data-theme='light'] .text-zinc-400,
+[data-theme='light'] .text-zinc-500,
+[data-theme='light'] .text-zinc-600 {
+  color: var(--color-text-muted);
+}
+[data-theme='light'] .border-zinc-600,
+[data-theme='light'] [class*='border-zinc-700/60'] {
+  border-color: var(--color-border);
+}
+[data-theme='light'] [class*='bg-white/5']:hover,
+[data-theme='light'] [class*='hover:bg-white/5']:hover {
+  background: rgba(15, 23, 42, 0.06);
+}
+[data-theme='light'] .bg-zinc-900,
+[data-theme='light'] [class*='bg-zinc-900/90'] {
+  background: var(--color-bg-elevated);
+}
+[data-theme='light'] .bg-surface-card {
+  background: rgba(248, 250, 252, 0.8);
+}
+/* TechStack section blocks only (they use bg-surface-card/80) */
+[data-theme='light'] .techstack-block {
+  background: rgba(248, 250, 252, 0.9);
+  border-color: rgba(15, 23, 42, 0.08);
+}
+/* TechStack: dark text and labels in light theme */
+[data-theme='light'] #techstack .text-zinc-100,
+[data-theme='light'] #techstack .text-zinc-200,
+[data-theme='light'] #techstack .text-zinc-300 {
+  color: var(--color-text);
+}
+[data-theme='light'] #techstack .text-zinc-400,
+[data-theme='light'] #techstack .text-zinc-500,
+[data-theme='light'] #techstack .text-zinc-600 {
+  color: var(--color-text-muted);
+}
+/* n8n, BigQuery, Looker: original dark logos on light background (no invert) */
+[data-theme='light'] .techstack-block img.invert {
+  filter: none;
+}
+[data-theme='light'] [class*='border-white/5'],
+[data-theme='light'] [class*='border-white/10'] {
+  border-color: var(--color-border);
+}
+
+/* Light theme: focus ring offset so outline is visible on light background */
+[data-theme='light'] .skip-link:focus,
+[data-theme='light'] [class*='ring-offset-zinc-950'] {
+  --tw-ring-offset-color: 248 250 252;
+}
+
+/* Default background for project card images (image sits on top; use images without page chrome) */
+.project-img-bg {
+  background-color: var(--color-bg);
+  background-image: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--color-accent) 8%, var(--color-bg)) 0%,
+    var(--color-bg) 40%,
+    color-mix(in srgb, var(--color-bg-elevated) 60%, var(--color-bg)) 100%
+  );
+}
+
+/* Scroll-triggered reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gradient text uses theme variable */
+.gradient-text {
+  background: var(--color-accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Subtle selection (theme-aware) */
+::selection {
+  background: var(--color-selection-bg);
+  color: var(--color-selection-text);
+}
+
+/* Focus visible for accessibility */
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-accent;
+}
+
+/* Skip to main content (hidden until keyboard focus) */
+.skip-link {
+  @apply fixed left-4 top-4 z-[100] rounded-xl bg-accent px-4 py-2 font-semibold text-zinc-950 transition focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-zinc-950;
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
+.skip-link:focus {
+  clip-path: none;
+  height: auto;
+  width: auto;
+  overflow: visible;
+  position: fixed;
+}
+
+/* Button press feedback */
+.btn-primary:active,
+a[href].rounded-xl.bg-accent:active {
+  transform: scale(0.98);
+}
+.btn-secondary:active,
+a[href].rounded-xl.border.border-zinc-600:active {
+  transform: scale(0.99);
+}

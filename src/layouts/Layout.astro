@@ -1,0 +1,81 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import '../styles/global.css';
+import LayoutShell from '../components/react/LayoutShell';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  page?: 'home' | 'about' | 'projects' | 'techstack' | 'contact';
+}
+const { title = 'Lucas Ruiz | FullStack Developer', description = 'Portfolio de Lucas Ruiz — desarrollador web full stack. Proyectos, stack y contacto.', image = 'https://res.cloudinary.com/dsbjzd18p/image/upload/f_auto,q_auto/v1772078363/lucas_ruiz_1_1_iqkopk.png', page = 'home' } = Astro.props;
+const siteUrl = Astro.url.origin;
+const canonical = Astro.url.href;
+---
+<!DOCTYPE html>
+<html lang="es" data-theme="gradient">
+  <script is:inline>
+    (function () {
+      try {
+        var t = localStorage.getItem('portfolio-theme');
+        if (['gradient', 'orange', 'blue', 'emerald', 'violet', 'light'].indexOf(t) !== -1) {
+          document.documentElement.setAttribute('data-theme', t);
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <head>
+    <ViewTransitions />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/chill-webs.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#0a0a0b" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content="Lucas Ruiz" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonical} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Syne:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Lucas Ruiz",
+      "url": siteUrl,
+      "description": description,
+      "image": image,
+      "jobTitle": "FullStack Developer",
+      "sameAs": [
+        "https://github.com/chill0101",
+        "https://www.linkedin.com/in/lucasruiz0101/"
+      ]
+    })} />
+  </head>
+  <body class="min-h-screen antialiased" style="color: var(--color-text);">
+    <!-- Page background: base + grid + subtle accent glow for depth -->
+    <div class="fixed inset-0 -z-10 bg-page bg-grid-pattern" aria-hidden="true"></div>
+    <div class="fixed inset-0 -z-10 page-bg-glow" aria-hidden="true"></div>
+    <a href="#main-content" class="skip-link">Ir al contenido</a>
+    <LayoutShell client:load page={page} />
+  </body>
+</html>
