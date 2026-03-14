@@ -63,6 +63,10 @@ export const config = {
         default: 'https://res.cloudinary.com/dsbjzd18p/image/upload/v1773109637/n8n_cocheras_erc9hp.png',
         thumbnail: 'https://res.cloudinary.com/dsbjzd18p/image/upload/v1773109637/n8n_cocheras_erc9hp.png',
       },
+      crecerJugandoGestalt: {
+        default: 'https://res.cloudinary.com/dsbjzd18p/image/upload/v1773458915/crecer-jugando-gestalt_z1kr7q.png',
+        thumbnail: 'https://res.cloudinary.com/dsbjzd18p/image/upload/f_auto,q_auto,w_600/v1773458915/crecer-jugando-gestalt_z1kr7q.png',
+      },
       project4: {
         default: 'https://placehold.co/1200x800/1e293b/64748b?text=Project+4',
         thumbnail: 'https://placehold.co/600x400/1e293b/64748b?text=Project+4',

@@ -37,6 +37,7 @@ function getEmbedUrl(url: string, kind: VideoKind): string {
 const projectKeys = [
   'assemblyLine',
   'n8nLecturaFacturas',
+  'crecerJugandoGestalt',
   'calendar',
   'n8nBigqueryCocheras',
   'railcar',
@@ -67,6 +68,13 @@ const projectMeta: Record<
     link: '#',
     github: '#',
     video: 'https://res.cloudinary.com/dsbjzd18p/video/upload/v1773108115/n8n_lectura_facturas_mxw3ax.mp4', // optional: YouTube, Vimeo, or direct .mp4 URL
+  },
+  crecerJugandoGestalt: {
+    title: 'Landing Page Crecer Jugando Gestalt',
+    descKey: 'crecerJugandoGestaltDesc',
+    tech: ['Astro'],
+    link: 'https://crecer-jugando-gestalt.vercel.app/',
+    github: 'https://github.com/chill0101/landing-page-gestalt-crecer',
   },
   calendar: {
     title: 'Calendar App',

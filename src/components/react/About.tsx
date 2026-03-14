@@ -2,7 +2,7 @@ import { useLanguage } from './LanguageContext';
 import { RevealOnScroll } from './RevealOnScroll';
 import { config } from '../../config/config';
 
-const frontendSkills = ['JavaScript', 'TypeScript', 'React', 'TailwindCSS', 'Bootstrap', 'CSS', 'HTML'];
+const frontendSkills = ['JavaScript', 'TypeScript', 'React', 'Astro', 'TailwindCSS', 'Bootstrap', 'CSS', 'HTML'];
 const backendSkills = ['Node.js', 'Express', 'MongoDB', 'Firebase', 'MySQL', 'PHP', 'JAVA', 'Python', 'PostgreSQL'];
 const aiPlatformsSkills = ['n8n', 'Chatbots', 'RAG', 'Google Apps Script', 'Big Query', 'Looker', 'Google Drive API', 'AI Agents'];
 
