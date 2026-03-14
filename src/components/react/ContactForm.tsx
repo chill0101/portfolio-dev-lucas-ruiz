@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import emailjs from 'emailjs-com';
 import { useLanguage } from './LanguageContext';
 import { config } from '../../config/config';
+
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f';
 
 export function ContactForm() {
   const { trl } = useLanguage();
@@ -18,22 +19,43 @@ export function ContactForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    const { serviceId, templateId, publicKey } = config.emailjs;
+    const formId = config.formspreeFormId;
+    if (!formId) {
+      setStatus({ submitted: true, success: false, message: trl.errorMessage });
+      return;
+    }
 
-    emailjs
-      .sendForm(serviceId, templateId, e.currentTarget, publicKey)
-      .then(() => {
-        setStatus({ submitted: true, success: true, message: trl.successMessage });
-        setFormData({ name: '', email: '', message: '' });
-        setIsSubmitting(false);
-      })
-      .catch(() => {
-        setStatus({ submitted: true, success: false, message: trl.errorMessage });
-        setIsSubmitting(false);
+    setIsSubmitting(true);
+    setStatus({ submitted: false, success: false, message: '' });
+    try {
+      const form = e.currentTarget;
+      const body = new FormData(form);
+      const url = `${FORMSPREE_ENDPOINT}/${formId}`;
+      const res = await fetch(url, {
+        method: 'POST',
+        body,
+        headers: { Accept: 'application/json' },
+        mode: 'cors',
       });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok) {
+        setFormData({ name: '', email: '', message: '' });
+        window.location.href = '/thanks';
+        return;
+      }
+      const errorMsg =
+        (Array.isArray(data?.errors) && data.errors.length > 0)
+          ? data.errors.map((err: { message?: string }) => err.message).filter(Boolean).join(', ')
+          : (data?.error ?? data?.message ?? null);
+      setStatus({ submitted: true, success: false, message: errorMsg || trl.errorMessage });
+    } catch (err) {
+      const message = err instanceof Error ? err.message : trl.errorMessage;
+      setStatus({ submitted: true, success: false, message: message || trl.errorMessage });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

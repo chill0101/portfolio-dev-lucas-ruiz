@@ -1,5 +1,5 @@
 /**
- * Centralized app config: images, social links, EmailJS (use env in .env).
+ * Centralized app config: images, social links, contact form (Formspree).
  * Set resumeUrl to a PDF URL to show "Download CV" (e.g. Cloudinary or public link).
  */
 export const config = {
@@ -9,11 +9,8 @@ export const config = {
   location: 'Buenos Aires, Argentina',
   /** When true, shows "Open to opportunities" badge in hero and footer. */
   openToWork: true,
-  emailjs: {
-    serviceId: import.meta.env.PUBLIC_EMAILJS_SERVICE_ID ?? '',
-    templateId: import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID ?? '',
-    publicKey: import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY ?? '',
-  },
+  /** Formspree form ID for contact form. Set PUBLIC_FORMSPREE_FORM_ID in .env or Vercel; fallback so form works out of the box. */
+  formspreeFormId: (import.meta.env.PUBLIC_FORMSPREE_FORM_ID ?? 'mdawdlld').trim(),
   images: {
     profile: {
       default:

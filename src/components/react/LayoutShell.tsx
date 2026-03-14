@@ -10,8 +10,9 @@ import { About } from './About';
 import { Projects } from './Projects';
 import { TechStack } from './TechStack';
 import { Contact } from './Contact';
+import { Thanks } from './Thanks';
 
-export type PageId = 'home' | 'about' | 'projects' | 'techstack' | 'contact';
+export type PageId = 'home' | 'about' | 'projects' | 'techstack' | 'contact' | 'thanks';
 
 const PAGE_COMPONENTS: Record<PageId, () => React.JSX.Element> = {
   home: () => <Hero />,
@@ -19,6 +20,7 @@ const PAGE_COMPONENTS: Record<PageId, () => React.JSX.Element> = {
   projects: () => <Projects />,
   techstack: () => <TechStack />,
   contact: () => <Contact />,
+  thanks: () => <Thanks />,
 };
 
 interface LayoutShellProps {

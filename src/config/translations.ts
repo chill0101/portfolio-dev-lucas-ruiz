@@ -91,6 +91,10 @@ export const translations: Record<
     languageEnglish: 'Inglés (C1)',
     languagePortuguese: 'Portugués (A2)',
     closeModal: 'Cerrar',
+    thanksTitle: '¡Mensaje enviado!',
+    thanksMessage: 'Gracias por contactarte. Te responderé pronto.',
+    backToContact: 'Volver a contacto',
+    backToHome: 'Ir al inicio',
   },
   en: {
     home: 'Home',
@@ -179,5 +183,9 @@ export const translations: Record<
     languageEnglish: 'English (C1)',
     languagePortuguese: 'Portuguese (A2)',
     closeModal: 'Close',
+    thanksTitle: 'Message sent!',
+    thanksMessage: 'Thanks for reaching out. I’ll get back to you soon.',
+    backToContact: 'Back to contact',
+    backToHome: 'Back to home',
   },
 };

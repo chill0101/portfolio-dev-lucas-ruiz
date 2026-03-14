@@ -1,13 +1,13 @@
 # Portfolio — Lucas Ruiz
 
-Portfolio personal (Astro + React + Tailwind). ES/EN, temas, formulario de contacto con EmailJS.
+Portfolio personal (Astro + React + Tailwind). ES/EN, temas, formulario de contacto con Formspree.
 
 ## Setup
 
 ```bash
 npm install
 cp .env.example .env
-# Edit .env with your EmailJS keys (optional; form works only if keys are set)
+# Set PUBLIC_FORMSPREE_FORM_ID in .env (form works only if set)
 ```
 
 ## Scripts
@@ -24,3 +24,4 @@ Build estático. Puedes desplegar en Vercel, Netlify, GitHub Pages, etc. apuntan
 
 - **Contenido y links:** `src/config/config.ts` (CV, ubicación, redes, imágenes).
 - **Textos ES/EN:** `src/config/translations.ts`.
+- **Formulario de contacto:** Formspree. Crear formulario en [formspree.io](https://formspree.io), copiar el Form ID (ej. `xyzabc` de `.../f/xyzabc`) y setear `PUBLIC_FORMSPREE_FORM_ID` en .env o en Vercel.
