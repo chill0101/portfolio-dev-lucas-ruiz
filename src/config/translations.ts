@@ -56,6 +56,7 @@ export const translations: Record<
     notesDesc:
       'App de notas con auth en React, MaterialUI, Firebase y Cloudinary.',
     ipptWeb: 'Landing del Instituto de Psicología (WordPress, Elementor).',
+    hChartsAppDesc: 'App de organigramas empresariales prácticos con NextJs, React, TailwindCSS y TypeScript.',
     assemblyLineDesc: 'Web App Generador de CSVs con lógica de Negocio para SSFF en procesos de altas de personal.',
     yogalabWeb: 'Landing de estudio de Yoga en Chile (WordPress, Flatsome).',
     n8nLecturaFacturasDesc: 'n8n automation for receipts reading and validation using AI and OCR.',
@@ -151,6 +152,7 @@ export const translations: Record<
       'Google Apps Script Web App for Google Sheets transfers. HTML, TailwindCSS, JS.',
     notesDesc: 'Notes app with auth in React, MaterialUI, Firebase, Cloudinary.',
     ipptWeb: 'Landing for Psychology Institute (WordPress, Elementor).',
+    hChartsAppDesc: 'Business Organizational Charts App with NextJs, React, TailwindCSS and TypeScript.',
     assemblyLineDesc: 'Web App Generator of CSVs with business logic for SSFF in high personal process.',
     yogalabWeb: 'Yoga studio landing in Chile (WordPress, Flatsome).',
     n8nLecturaFacturasDesc: 'n8n automation for receipts reading and validation using AI and OCR.',

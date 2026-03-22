@@ -21,6 +21,12 @@ export const config = {
         'https://res.cloudinary.com/dsbjzd18p/image/upload/f_auto,q_auto,w_800/v1772078363/lucas_ruiz_1_1_iqkopk.png',
     },
     projects: {
+      hChartsApp: {
+        default:
+          'https://res.cloudinary.com/dsbjzd18p/image/upload/v1774211582/h-charts-app_ut2lod.png',
+        thumbnail:
+          'https://res.cloudinary.com/dsbjzd18p/image/upload/f_auto,q_auto,w_600/h-charts-app_ut2lod.png',
+      },
       calendar: {
         default:
           'https://res.cloudinary.com/dsbjzd18p/image/upload/f_auto,q_auto/whycl0fflapnoxlbcvnl',

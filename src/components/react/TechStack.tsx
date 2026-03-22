@@ -10,6 +10,7 @@ const FRONTEND: TechItem[] = [
   { name: 'JavaScript', icon: `${CDN_DEVICON}/javascript/javascript-original.svg` },
   { name: 'TypeScript', icon: `${CDN_DEVICON}/typescript/typescript-original.svg` },
   { name: 'React', icon: `${CDN_DEVICON}/react/react-original.svg` },
+  { name: 'Astro', icon: `${CDN_DEVICON}/astro/astro-original.svg` },
   { name: 'Next.js', icon: `${CDN_DEVICON}/nextjs/nextjs-original.svg` },
   { name: 'Tailwind CSS', icon: `${CDN_DEVICON}/tailwindcss/tailwindcss-original.svg` },
   { name: 'Bootstrap', icon: `${CDN_DEVICON}/bootstrap/bootstrap-plain.svg` },

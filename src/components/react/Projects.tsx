@@ -35,6 +35,7 @@ function getEmbedUrl(url: string, kind: VideoKind): string {
 }
 
 const projectKeys = [
+  'hChartsApp',
   'assemblyLine',
   'n8nLecturaFacturas',
   'crecerJugandoGestalt',
@@ -52,10 +53,17 @@ const projectMeta: Record<
   (typeof projectKeys)[number],
   { title: string; descKey: TrlKey; tech: string[]; link: string; github: string; video?: string }
 > = {
+  hChartsApp: {
+    title: 'H-charts App',
+    descKey: 'hChartsAppDesc',
+    tech: ['NextJs', 'React', 'TailwindCSS', 'TypeScript'],
+    link: 'https://h-charts-app.vercel.app/',
+    github: 'https://github.com/chill0101/h-charts-app',
+  },
   assemblyLine: {
     title: 'Assembly Line',
     descKey: 'assemblyLineDesc',
-    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Bootstrap'],
+    tech: ['JavaScript','Bigquery'],
     link: '#',
     github: '#',
     video: 'https://res.cloudinary.com/dsbjzd18p/video/upload/v1773108111/assembly_line_dcbzwr.mp4'
